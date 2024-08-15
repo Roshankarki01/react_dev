@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import Navbar from './components/navbar';
-import Sidebar from './components/sidebar';
-import Parent from './components/child';
-import Increament from './components/increament';
-import Cincrement from './components/cincrement';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './component/navbar';
+import Home from './component/home';
+import Contact from './component/contact';
+import About from './component/about';
+import Login from './component/login';
+import Blog from './component/blog'; // Ensure Blog component is imported
 
-import Roshan from './recipecomponent/navbar';
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
   return (
     <div className="App">
-      {/* <Navbar/>
-      <Sidebar/>
-      <Parent/>
-      <Increament name="herald" age= {12}/>
-      <Cincrement  /> */}
-      <Roshan/>
-
-    
+      {isLoggedIn ? (
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/blog" element={<Blog />} />
+          </Routes>
+        </Router>
+      ) : (
+        <Login onLogin={handleLogin} />
+      )}
     </div>
   );
 }

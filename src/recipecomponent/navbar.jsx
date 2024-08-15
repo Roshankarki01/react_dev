@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./page.css"
 
 function Login() {
   const [G_mail, setGmail] = useState('');

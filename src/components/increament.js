@@ -4,6 +4,17 @@ import PropTypes from 'prop-types';
 const Increment = (props) => {
     const [value, setValue] = useState(0);
 
+    useState(()=>{
+        console.log("element is mount");
+    })
+    useState(()=>{
+        console.log("componenet updates");
+
+        return()=>{
+            console.log("component or l=element remove");
+        }
+    },[value])
+
     const handleIncrement = () => {
         setValue(value + 1);
     };

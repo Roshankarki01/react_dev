@@ -5,6 +5,16 @@ class Cincrement extends Component {
         super(props);
         this.state = { value: 0 };
     }
+    componentDidMount(){
+        console.log("this will show up the componenet first load") //mounting
+    }
+    componentDidUpdate=(prvPops , prevState) =>{
+        if (prvPops.value!==this.state.value+1);
+    }
+
+    componentWillUnmount(){
+        console.log("component of element remove") //unmounting
+    }
 
     handleCincrement = () => {
         this.setState({ value: this.state.value + 1 });
